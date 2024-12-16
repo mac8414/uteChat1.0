@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang = en>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ute Chat</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon-32x32.png') }}" type="image/png">
+
+    <style>
+        body, html {
+            height: 100%; /* Ensure the body takes up the full height of the viewport */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(220, 20, 20);
+            font-family: "Consolas", "Courier New", Courier, monospace;
+            padding: 20px;
+            
+        }
+        
+        h1{
+            text-shadow:1px 1px 0 #ffffff, -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff;
+            text-align: center;
+            padding: 10px;
+            color: black;
+            margin-left: -330px;
+            margin-right: auto;
+            position: absolute; /* Keep the h1 above the centered content */
+            top: 160px;
+            width: 100%;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            background: transparent;    
+        }
+
+        .search{
+            --padding: 14px;
+            width: max-content;
+            display: flex;
+            align-items: center;
+            padding:var(--padding);
+            border-radius: 28px;
+            background: white;
+            width: 600px;
+            transition: background 0.25s;
+        }
+
+        .search:focus-within{
+            background: gainsboro;
+        }
+
+        .search-input{
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            color: black;
+            margin-left: 14px;
+            outline: none;
+            border: none;
+            background: transparent;
+            flex: 1;
+        }
+        
+        .search-input::placeholder{
+            color: gray;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 50px;">Ute Chat v1.0</h1>
+    </header>
+    <form>
+        <div class = "search">
+            <span class = "materials-symbols-outlined"></span>
+            <input id = "search-input" class = "search-input" type = "search" name = "query" placeholder="Search..." >
+        </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('search-input').addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent the default form submission
+                    const query = document.getElementById('search-input').value; // Get the value of the search input
+                    if(query == "account rep" || query == "account reps"){
+                        window.location.href = `http://127.0.0.1:5000/account-reps`; 
+                    }
+                    else{
+                        window.location.href = `http://127.0.0.1:5000/query?search=${encodeURIComponent(query)}`; 
+                    }  // Redirect with the query parameter
+                }
+            });
+        });
+    </script>
+</body>
+</html>

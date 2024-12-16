@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang = en>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account reps</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon-32x32.png') }}" type="image/png">
+    <style>
+        body{
+            background-color: rgb(220, 20, 20);
+        }
+        
+        img{
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+
+        #button:hover{
+            background-color: gainsboro;
+            color: black;
+            border: 2px solid gainsboro;
+        }        
+
+        #button {
+            background-color: white; 
+            color: black; 
+            border: 2px solid white;
+            margin-top: 25px;
+            border-radius: 28px;
+            width: 200px;
+            height: 75px;
+            font-size: 16px;
+            margin-left: 550px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <img id="myImage" style="display:none;" alt="accountReps.png">
+    <button id="button">Go Back</button>
+    <script>
+        window.onload = function(){
+            var img = document.getElementById("myImage");
+            img.src = "{{url_for('static', filename = 'accountReps.png')}}";
+            img.style.display = 'block';
+        };
+        
+        document.getElementById("button").addEventListener("click", function(){
+            if(event.type == "click"){
+                window.location.href = `http://127.0.0.1:5000/home`;
+            }
+        });
+    </script>
+
+</body>
+</html>
