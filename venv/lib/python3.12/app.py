@@ -24,5 +24,5 @@ def query():
     return render_template("query.html", query=search_query, answers=answers)
 
 @app.route("/account-reps")
-def accountrep():
+def account_rep():
     return render_template("account_reps.html")
